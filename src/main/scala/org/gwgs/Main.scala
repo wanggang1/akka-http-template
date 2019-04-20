@@ -31,12 +31,12 @@ object Main extends App with UserRoutes {
     case Failure(e) =>
       log.error(s"Server could not start!")
       e.printStackTrace()
-      system.terminate()
+      Await.result(system.terminate, Duration.Inf)
   }
 
   // Correctly handle Ctrl+C and docker container stop
   sys.addShutdownHook({
     log.info("Shutdown ...")
-    Await.result(system.whenTerminated, Duration.Inf)
+    Await.result(system.terminate, Duration.Inf)
   })
 }
