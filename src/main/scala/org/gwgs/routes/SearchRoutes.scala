@@ -10,6 +10,10 @@ import org.gwgs.utils.JsonSupport
 
 import scala.concurrent.Future
 
+/**
+  * custom validation directive validateParams is used instead of the standard validate,
+  * https://doc.akka.io/docs/akka-http/current/routing-dsl/directives/misc-directives/validate.html
+  */
 trait SearchRoutes extends SearchDirectives with JsonSupport {
 
   // we leave these abstract, since they will be provided by the App
