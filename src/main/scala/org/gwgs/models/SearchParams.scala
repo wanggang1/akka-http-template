@@ -20,10 +20,10 @@ object SearchParams {
   implicit class SearchParamsValidation(params: SearchParams) extends Validatable[SearchParams] {
 
     /**
-      * Because validateMinMax depends on minYearsWorked and maxYearsWorked to be valid,
-      * it has to be validated afterward (use chain action `andThen`).  Therefore, its
-      * validation error is not combined with the other errors.
-      */
+     * Because validateMinMax depends on minYearsWorked and maxYearsWorked to be valid,
+     * it has to be validated afterward (use chain action `andThen`).  Therefore, its
+     * validation error is not combined with the other errors.
+     */
     def validate: ValidationResult[SearchParams] = {
       (validateName, validateMinYears, validateMaxYears).mapN(SearchParams(_, _, _)) andThen validateMinMax
     }

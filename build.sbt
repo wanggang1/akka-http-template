@@ -7,7 +7,7 @@ lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
       organization    := "org.gwgs",
-      scalaVersion    := "2.12.7"
+      scalaVersion    := "2.12.8"
     )),
     name := "akka-http-template",
     libraryDependencies ++= Seq(
