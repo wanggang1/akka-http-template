@@ -12,9 +12,9 @@ trait SearchDirectives {
    * Checks the given condition before running its inner route.
    * If the condition fails the route is rejected with a [[ValidationRejection]].
    */
-  def validateParams(ageParam: SearchParams): Directive1[SearchParams] =
+  def validateParams(param: SearchParams): Directive1[SearchParams] =
     Directive { inner =>
-      ageParam.validate match {
+      param.validate match {
         case Valid(p) =>
           inner(Tuple1(p))
         case Invalid(errors) =>
