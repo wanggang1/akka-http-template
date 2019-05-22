@@ -17,7 +17,7 @@ object SearchParams {
    *   maxYearsWorked > 0
    *   minYearsWorked <= maxYearsWorked
    */
-  implicit class SearchParamsValidation(params: SearchParams) extends Validatable[SearchParams] {
+  implicit class SearchParamsValidation(params: SearchParams) extends HasValidate[SearchParams] {
 
     /**
      * Because validateMinMax depends on minYearsWorked and maxYearsWorked to be valid,

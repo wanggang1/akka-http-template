@@ -9,11 +9,11 @@ trait SearchDirectives {
   import RouteDirectives._
 
   /**
-    * Checks the given condition before running its inner route.
-    * If the condition fails the route is rejected with a [[ValidationRejection]].
-    *
-    * can't make params generic, because inner(Tuple1(p)) requires a concrete type for p
-    */
+   * Checks the given condition before running its inner route.
+   * If the condition fails the route is rejected with a [[ValidationRejection]].
+   *
+   * can't make params generic, because inner(Tuple1(p)) requires a concrete type for p
+   */
   def validateParams(param: SearchParams): Directive1[SearchParams] =
     Directive { inner =>
       param.validate match {
