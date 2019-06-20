@@ -15,10 +15,10 @@ trait SearchDirectives {
    * can't make params generic, because inner(Tuple1(p)) requires a concrete type for p
    */
   def validateParams(param: SearchParams): Directive1[SearchParams] =
-    Directive { inner =>
+    Directive { inner =>  //Tuple1[SearchParams] => server.Route
       param.validate match {
         case Valid(p) =>
-          inner(Tuple1(p))
+          inner(Tuple1(p))  //continuation
         case Invalid(errors) =>
           val errorMsg = errors.toList.map(_.message).mkString(", ")
           reject(ValidationRejection(errorMsg))
